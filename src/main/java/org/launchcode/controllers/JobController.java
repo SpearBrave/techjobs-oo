@@ -22,8 +22,10 @@ public class JobController {
     // The detail display for a given Job at URLs like /job?id=17
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model, int id) {
+        Job job = JobData.findById(id);
+        model.addAttribute("job",job);
 
-        // TODO #1 - get the Job with the given ID and pass it into the view
+        // ****TODO #1 - get the Job with the given ID and pass it into the view
 
         return "job-detail";
     }
@@ -36,10 +38,18 @@ public class JobController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(Model model, @Valid JobForm jobForm, Errors errors) {
-
-        // TODO #6 - Validate the JobForm model, and if valid, create a
-        // new Job and add it to the jobData data store. Then
-        // redirect to the job detail view for the new Job.
+        if (errors.hasErrors()){
+            model.addAttribute("name","name");
+            model.addAttribute("job",new Job());
+            return "new-job";
+        }
+        // TODO #6 - Relates to TODO-5
+        //
+        //  Validate the JobForm model,
+        //
+        // if valid, create a new Job and add it to the jobData data store.
+        //
+        // Then redirect to the job detail view for the new Job.
 
         return "";
 

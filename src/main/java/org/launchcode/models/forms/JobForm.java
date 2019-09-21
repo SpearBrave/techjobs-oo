@@ -18,20 +18,25 @@ public class JobForm {
     @NotNull
     @Size(min=1, message = "Name may not be empty")
     private String name;
+    public String getName() {
+        return name;
+    }
+    public  ok() {
+        @NotNull
+        private ArrayList<Employer> employer-Id;
+        @NotNull
+        private ArrayList<Location> location-Id;
+        @NotNull
+        private ArrayList<CoreCompetency> skill-Id;
+        @NotNull
+        private ArrayList<PositionType> position-Type-Id;
+    }
+    /*3,4,5 easy !!!!!!!!!!!!!!!!!!!!!!!!!
+            ****TODO #3 - Include other fields needed to create a job,
+            with correct validation attributes and display names.
+            Don't forget to add getters and setters
+         */
 
-    @NotNull
-    private int employerId;
-
-    /*
-        TODO #3 - Included other fields needed to create a job,
-        with correct validation attributes and display names.
-        Don't forget to add getters and setters
-     */
-
-    private ArrayList<Employer> employers;
-    private ArrayList<Location> locations;
-    private ArrayList<CoreCompetency> coreCompetencies;
-    private ArrayList<PositionType> positionTypes;
 
     public JobForm() {
 
@@ -40,8 +45,10 @@ public class JobForm {
         /*
             TODO #4 - populate the other ArrayList collections needed in the view
         */
-
-        employers = jobData.getEmployers().findAll();
+        locations = JobData.getLocations().findAll();
+        employers = JobData.getEmployers().findAll();
+        coreCompetencies =JobData.getCoreCompetencies().findAll();
+        positionTypes= JobData.getPositionTypes().findAll();
 
     }
 
